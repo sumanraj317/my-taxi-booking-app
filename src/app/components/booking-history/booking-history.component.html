@@ -1,0 +1,19 @@
+<div class="booking-history-container">
+    <h2>Your Bookings</h2>
+  
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  
+    <mat-card *ngIf="error" class="error-message">
+      {{ error }}
+    </mat-card>
+  
+    <mat-card *ngFor="let booking of bookings" class="booking-card">
+      <mat-card-title>Pickup: {{ booking.pickupLocation }}</mat-card-title>
+      <mat-card-content>
+        <p>Drop: {{ booking.dropLocation }}</p>
+        <p>Pickup Time: {{ booking.pickupTime | date: 'short' }}</p>
+        <p>Status: {{ booking.status }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

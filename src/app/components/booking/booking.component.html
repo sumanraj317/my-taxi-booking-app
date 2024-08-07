@@ -1,0 +1,42 @@
+<div class="booking-container">
+    <h2>Book a Taxi</h2>
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Pickup Location</mat-label>
+        <input matInput formControlName="pickupLocation" required />
+        <mat-error *ngIf="bookingForm.get('pickupLocation')?.hasError('required')">
+          Pickup Location is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Drop Location</mat-label>
+        <input matInput formControlName="dropLocation" required />
+        <mat-error *ngIf="bookingForm.get('dropLocation')?.hasError('required')">
+          Drop Location is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Pickup Time</mat-label>
+        <input matInput formControlName="pickupTime" type="datetime-local" required />
+        <mat-error *ngIf="bookingForm.get('pickupTime')?.hasError('required')">
+          Pickup Time is required
+        </mat-error>
+      </mat-form-field>
+  
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="bookingForm.invalid || isLoading"
+      >
+        {{ isLoading ? 'Booking...' : 'Book Taxi' }}
+      </button>
+    </form>
+  
+    <mat-card *ngIf="error" class="error-message">
+      {{ error }}
+    </mat-card>
+  </div>
+  

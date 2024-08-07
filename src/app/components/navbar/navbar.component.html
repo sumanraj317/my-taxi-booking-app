@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Taxi Booking App</span>
+  
+      <span class="spacer"></span>
+  
+      <button mat-button routerLink="/login" *ngIf="!isAuthenticated">Login</button>
+      <button mat-button routerLink="/register" *ngIf="!isAuthenticated">Register</button>
+      <button mat-button routerLink="/booking" *ngIf="isAuthenticated">Book Taxi</button>
+      <button mat-button routerLink="/booking-history" *ngIf="isAuthenticated">Bookings</button>
+      <button mat-button (click)="logout()" *ngIf="isAuthenticated">Logout</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
